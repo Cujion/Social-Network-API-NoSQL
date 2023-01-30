@@ -1,0 +1,25 @@
+{
+  "name": "social-network-api-nosql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cujion/Social-Network-API-NoSQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.13"
+  },
+  "bugs": {
+    "url": "https://github.com/Cujion/Social-Network-API-NoSQL/issues"
+  },
+  "homepage": "https://github.com/Cujion/Social-Network-API-NoSQL#readme"
+}
