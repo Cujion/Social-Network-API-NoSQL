@@ -28,5 +28,25 @@ module.exports = {
             return res.status(500).json(err);
         });
     },
+    // Update a User
+    updateUser(req, res) {
+
+    },
+    // Delete a User
+    deleteUser(req, res) {
+
+    },
+    // Delete a Users Associated Thoughts
+    deleteUsersThoughts(req, res) {
+
+    },
+    // Add a Friend
+    addFriend(req, res) {
+
+    },
+    // Delete a Friend
+    deleteFriend(req, res) {
+
+    }
 }
 
