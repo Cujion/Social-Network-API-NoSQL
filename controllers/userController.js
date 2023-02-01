@@ -1,5 +1,5 @@
 const { User, Thought } = require('../models');
-const { ObjectId } = require('mongoose').Types;
+
 
 module.exports = {
     // Get All Users
@@ -14,7 +14,7 @@ module.exports = {
         .select('-__v')
         .then((user) =>
           !user
-            ? res.status(404).json({ message: 'No User with that ID' })
+            ? res.status(404).json({ message: 'No User with that ID :(' })
             : res.json(user)
         )
         .catch((err) => res.status(500).json(err));
@@ -37,7 +37,7 @@ module.exports = {
         )
         .then((user) =>
             !user
-                ? res.status(404).json({ message: 'No User with that ID' })
+                ? res.status(404).json({ message: 'No User with that ID :(' })
                 : res.json(user)
         )
         .catch((err) => res.status(500).json(err));
@@ -47,7 +47,7 @@ module.exports = {
         User.findOneAndDelete({ _id: req.params.userId })
         .then((user) => 
             !user
-                ? res.status(404).json({ message: 'No User with that ID' })
+                ? res.status(404).json({ message: 'No User with that ID :(' })
                 : res.json(user)
         )
         .catch((err) => res.status(500).json(err));
@@ -60,19 +60,29 @@ module.exports = {
     addFriend(req, res) {
         User.findOneAndUpdate(
             { _id: req.params.userId },
-            { $addToSet: { friends: req.params.friendId }},
+            { $addToSet: { friends: req.params.friendsId }},
             { runValidators: true, new: true }
         )
             .then((user) => 
             !user
-                ? res.status(404).json({ message: 'No User with that ID' })
+                ? res.status(404).json({ message: 'No User with that ID :(' })
                 : res.json(user)
         )
         .catch((err) => res.status(500).json(err));
     },
     // Delete a Friend by ID
     deleteFriend(req, res) {
-
+        User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $pull: { friends: req.params.friendsId }},
+            { runValidators: true, new: true }
+            )
+            .then((user) => 
+            !user
+                ? res.status(404).json({ message: 'No User with that ID :(' })
+                : res.json(user)
+        )
+        .catch((err) => res.status(500).json(err));
     }
 }
 
