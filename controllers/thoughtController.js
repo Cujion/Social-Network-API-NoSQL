@@ -12,11 +12,31 @@ module.exports = {
     getSingleThought(req, res) {
         Thought.findOne({ _id: req.params.userId })
         .select('-__v')
-        .then((thoughts) =>
-            !thoughts
+        .then((thought) =>
+            !thought
             ? res.status(404).json({ message: 'No Thought with that ID' })
-            : res.json(thoughts)
+            : res.json(thought)
         )
         .catch((err) => res.status(500).json(err));
+    },
+    // Create a Thought
+    createThought(req, res) {
+        Thought.create(req.body)
+        .then((thought) => {
+            return User.findOneAndUpdate(
+                { _id: req.body.userId },
+                { $push: { thoughts: thought._id }},
+                { new: true }
+            );
+        })
+        .then((users) => {
+            !users
+            ? res.status(404).json({ message: 'No User with that ID' })
+            : res.json(users)
+        })
+        .catch((err) => {
+            console.log(err);
+            return res.status(500).json(err);
+        });
     },
 }
