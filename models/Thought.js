@@ -1,8 +1,8 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
-// const formattedDate = require('../utils/helpers');
+// Pulling in dayjs for date formatting
 const dayjs = require('dayjs');
-
+// Thoughts schema
 const thoughtSchema = new Schema(
     {
         thoughtText: {
@@ -31,7 +31,7 @@ const thoughtSchema = new Schema(
     }
 )
 
-
+// Creating a virtual to count number of reactions
 thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
 });

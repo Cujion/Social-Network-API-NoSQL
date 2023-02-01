@@ -1,6 +1,7 @@
 const { Schema, model, Types } = require('mongoose');
+// Pulling in dayjs for date formatting
 const dayjs = require('dayjs');
-
+// Reactions schema
 const reactionSchema = new Schema(
     {
         reactionId: {
