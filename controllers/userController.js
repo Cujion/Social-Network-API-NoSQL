@@ -8,7 +8,7 @@ module.exports = {
         .then((users) => res.json(users))
         .catch((err) => res.status(500).json(err));
     },
-    // Get a Single User
+    // Get a Single User by ID
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.userId })
         .select('-__v')
@@ -28,11 +28,11 @@ module.exports = {
             return res.status(500).json(err);
         });
     },
-    // Update a User
+    // Update a User by ID
     updateUser(req, res) {
 
     },
-    // Delete a User
+    // Delete a User by ID
     deleteUser(req, res) {
 
     },
@@ -44,7 +44,7 @@ module.exports = {
     addFriend(req, res) {
 
     },
-    // Delete a Friend
+    // Delete a Friend by ID
     deleteFriend(req, res) {
 
     }

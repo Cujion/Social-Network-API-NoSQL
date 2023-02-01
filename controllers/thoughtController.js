@@ -8,7 +8,7 @@ module.exports = {
         .then((thoughts) => res.json(thoughts))
         .catch((err) => res.status(500).json(err));
     },
-    // Get a Single Thought
+    // Get a Single Thought by ID
     getSingleThought(req, res) {
         Thought.findOne({ _id: req.params.userId })
         .select('-__v')
@@ -39,4 +39,20 @@ module.exports = {
             return res.status(500).json(err);
         });
     },
+    // Update a Thought by ID
+    updateThought(req, res) {
+
+    },
+    // Delete a Thought by ID
+    deleteThought(req, res) {
+
+    },
+    // Create a Reaction
+    createReaction(req, res) {
+
+    },
+    // Delete a Reaction by ID
+    deleteReaction(req, res) {
+
+    }
 }
